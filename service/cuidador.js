@@ -3,25 +3,25 @@ const Cuidador = require('../models/cuidador');
 const { Op ,Sequelize } = require('sequelize');
 
 
-const findAllMascotas = async () => {
+const findAllCuidador = async () => {
     try {
-        const mascotas = await Mascota.findAll({
+        const cuidadores = await Cuidador.findAll({
             include: [{
-                model: Cuidador,
+                model: Mascota,
                 // attributes: ['nombre'],  por si quiero filtrar por algun atributo como el nombre :D
             }]
         });
-        if (mascotas.length == 0) {
+        if (cuidadores.length == 0) {
             return {
-                msg: 'no hay mascotas registradas',
+                msg: 'no hay cuidadores registrados',
                 status: 204,
                 datos: []
             }
         }
         return {
-            msg: 'Listado actual de mascotas',
+            msg: 'Listado actual de cuidadores',
             status: 200,
-            datos: mascotas.map(mascota => mascota.toJSON())
+            datos: cuidadores.map(cuidador => cuidador.toJSON())
         }
     } catch (error) {
         console.log(error.message);
@@ -33,26 +33,29 @@ const findAllMascotas = async () => {
     }
 };
 
-const findAttributeMascotas = async (clave, valor) => {
+const findAttributeCuidador = async (clave, valor) => {
     try {
-        let condiciones = {}; // Asegúrate de inicializar condiciones como un objeto
-        if (clave === 'id' || clave === 'edad') {
-            condiciones[clave] = parseInt(valor, 10); // Tuve que parcearlo porque me lo convertía en string
+        let condiciones;
+
+        if (clave === 'id') {
+           // parseamos directamente 
+            condiciones = { id: parseInt(valor, 10) };
         } else {
+            // Aplicamos `unaccent` para los acentos  `iLike` para comparar con o sin acentos
             condiciones = Sequelize.where(
-                Sequelize.fn('unaccent', Sequelize.col(`mascotas.${clave}`)),
+                Sequelize.fn('unaccent', Sequelize.col(`cuidador.${clave}`)),
                 { [Op.iLike]: Sequelize.fn('unaccent', `%${valor}%`) }
             );
         }
 
-        const mascota = await Mascota.findAll({
+        const cuidador = await Cuidador.findAll({
             where: condiciones,
             include: [{
-                model: Cuidador,
+                model: Mascota,
             }]
         });
 
-        if (mascota.length === 0) {
+        if (cuidador.length === 0) {
             return {
                 msg: `No se encontraron resultados para ${clave} = ${valor}`,
                 status: 204, 
@@ -63,7 +66,7 @@ const findAttributeMascotas = async (clave, valor) => {
         return {
             msg: `Búsqueda realizada por ${clave} = ${valor}`,
             status: 201,
-            datos: mascota
+            datos: cuidador
         };
     } catch (error) {
         console.log(error.message);
@@ -76,39 +79,33 @@ const findAttributeMascotas = async (clave, valor) => {
 };
 
 
-const updateMascotas = async (id,nombre,especie,raza,edad,genero) => {
+const updateCuidador = async (id,nombre,apellido,rut) => {
 try {
-    const mascota = await Mascota.findByPk(id);
+    const cuidador = await Cuidador.findByPk(id);
 
-    if(!mascota){
+    if(!cuidador){
         return {
-            msg: `No se ha encontrado la mascota asociada al id ${id}`,
+            msg: `No se ha encontrado el cuidador asociada al id ${id}`,
             status: 204,
             datos: []
         }
     }
-    if(mascota){
+    if(cuidador){
         if(nombre){
-            mascota.nombre =nombre;
+            cuidador.nombre =nombre;
         }
-        if(especie){
-            mascota.especie=especie;
+        if(apellido){
+            cuidador.apellido=apellido;
         }
-        if(raza){
-            mascota.raza=raza;
-        }
-        if(edad){
-            mascota.edad=edad;
-        }
-        if(genero){
-            mascota.genero=genero;
+        if(rut){
+            cuidador.rut=rut;
         }
     }
-        await mascota.save();
+        await cuidador.save();
         return {
-            msg: 'Mascota actualizada con éxito',
+            msg: 'Cuidador actualizada con éxito',
             status: 200,
-            datos: mascota
+            datos: cuidador
         };
 } catch (error) {
     console.log(error.message);
@@ -120,21 +117,19 @@ try {
 }
 }
 
-const createMascota = async (nombre,especie,raza,edad,genero) => {
+const createCuidador = async (nombre,apellido,rut) => {
     try {
-        const nuevaMascota = await Mascota.create({
+        const nuevoCuidador = await Cuidador.create({
             nombre,
-            especie,
-            raza,
-            edad,
-            genero
+            apellido,
+            rut
         });
     
-        const mascotas = await Mascota.findAll();
+        const cuidadores = await Cuidador.findAll();
         return {
-            msg: `La mascota ${nombre} fue insertada correctamente.`,
+            msg: `El cuidador/a ${nombre} fue insertada correctamente.`,
             status: 200,
-            datos: mascotas.map(mascota=> mascota.toJSON())
+            datos: cuidadores.map(cuidador=> cuidador.toJSON())
         };
 
 
@@ -148,15 +143,15 @@ const createMascota = async (nombre,especie,raza,edad,genero) => {
     }
 }
 
-const deleteMascota = async (id) => {
+const deleteCuidador = async (id) => {
 
     try {
-        const mascota = Mascota.destroy({where:{id}});
-        const mascotas = await Mascota.findAll();
+        const cuidador = Cuidador.destroy({where:{id}});
+        const cuidadores = await Cuidador.findAll();
         return {
-            msg: `La mascota asociada al id ${id} ha sido eliminada correctamente.`,
+            msg: `El/la cuidador/a asociado/a al id ${id} ha sido eliminada correctamente.`,
             status: 200,
-            datos: mascotas.map(mascota=> mascota.toJSON())
+            datos: cuidadores.map(cuidador=> cuidador.toJSON())
         };
 
 
@@ -172,9 +167,9 @@ const deleteMascota = async (id) => {
 }
 
 module.exports = {
-    findAllMascotas,
-    findAttributeMascotas,
-    updateMascotas,
-    createMascota,
-    deleteMascota
+findAllCuidador,
+findAttributeCuidador,
+updateCuidador,
+createCuidador,
+deleteCuidador
 }

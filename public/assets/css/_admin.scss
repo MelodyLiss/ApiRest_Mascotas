@@ -1,0 +1,99 @@
+form ,.listadoMascotas{
+    margin-top: -1rem;
+    padding: 2.5rem;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+    background-size: 16px 16px;
+
+    h3 {
+        text-transform: uppercase;
+        background-color: #e6e3e3;
+        padding: 0.2rem;
+        text-align: center;
+    }
+
+    button{
+        background-color: #007bff;
+        color: #e6e3e3;
+        border: none;
+        padding: 0.5rem;
+        display: block;
+    margin: 0 auto;
+    }
+}
+
+fieldset{
+    border: 0.2rem solid #007bff;
+    background-color: #e6e3e3;
+    margin: 2rem;
+
+    legend{
+        background-color: #007bff;
+        padding: 0.5rem;
+        text-transform: uppercase;
+        color: #e6e3e3;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.5rem;
+    }
+
+    input,
+    select {
+        text-align: left;
+        width: 80%;
+
+    }
+}
+
+#buscar-form{
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+    input{
+        width: 40%;
+        margin: auto;
+    }
+}
+
+
+.secciones_admin{
+    table{
+        thead {
+            th{
+            background-color: #007bff;
+            text-transform: uppercase;
+            color: #e6e3e3;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            margin: none;
+            }
+        }
+        tbody{
+    
+            th,tr,td{   
+            background-color: #e6e3e3;
+            padding: 0.3rem 0.8rem;
+    
+    
+            }
+
+        #rut{
+            padding: 0.3rem 3rem;
+        }
+    
+        }
+
+    }
+}
+

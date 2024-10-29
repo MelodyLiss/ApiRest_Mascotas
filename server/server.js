@@ -9,7 +9,7 @@ class Server {
     }
 
     middlewares() {
-        // this.app.use(express.static('public'));
+        this.app.use(express.static('public'));
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended:true}));
 
@@ -17,6 +17,7 @@ class Server {
 
     router(){
         this.app.use('/mascotas', require('../routers/mascota'));
+        this.app.use('/cuidadores',require('../routers/cuidador'))
     }
 
     listen(){

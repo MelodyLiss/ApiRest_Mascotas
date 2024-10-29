@@ -1,0 +1,242 @@
+html {
+    box-sizing: border-box;
+    font-family: $primary_font;
+    background-color: $secondary_color_light;
+    font-family: $primary_font , sans-serif;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    color: $black_color;
+    
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+header {
+    margin-top: 2rem;
+    flex-direction: column;
+    width: 70%;
+
+
+    nav {
+        background-color: $primary_color_light;
+        padding: 0.3rem;
+        margin-top: -2rem;
+        border-radius: 0 0 2rem 2rem;
+        text-transform: uppercase;
+        margin-left: 70rem;
+        width: 40%;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+
+            li {
+                margin: 0rem 1rem;
+                font-size: 1rem;
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: $black_color;
+
+                &:hover {
+                    color: $primary_color_dark;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    h1 {
+        text-transform: uppercase;
+        text-align: center;
+        padding: 1rem;
+        font-family: $tertiary_font;
+        font-size: 4rem;
+        background-color: $primary_color_dark;
+        color: $white_color;
+        width: 50%;
+        border-radius: 2rem;
+        margin: auto;
+
+    }
+
+    h3 {
+        margin-top: 0.5rem;
+        font-family: $secondary_font;
+        font-weight: 700;
+        margin-left: 30rem;
+        font-size: 3.5rem;
+    }
+
+    hr {
+        color: $tertiary_color;
+        border: 0.3rem solid $tertiary_color;
+        border-radius: 2rem;
+        width: 25rem;
+        margin-top: -2.5rem;
+        margin-right: 7rem;
+        @include desktopXL{
+            margin-right: 11rem;
+            width: 30rem;
+            margin-top: -3.5rem;
+        }
+
+    }
+
+}
+
+.informacion {
+    width: 70%;
+    display: flex;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include desktopXL{
+        font-size: 1.3rem;
+    }
+
+    img {
+        margin: 3rem;
+        width: 30%;
+        height: 30%;
+        border: 1rem solid $primary_color_light;
+        transform: rotate(-6deg);
+
+        &:hover {
+            transform: rotate(3deg);
+
+        }
+    }
+
+    .informacion_div {
+        background-color: #ffffff;
+        opacity: 1;
+        background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+        background-size: 16px 16px;
+        padding: 2rem;
+        margin-left: 2rem;
+        
+
+        p,
+        li {
+            background-color: #ffffff;
+            padding: 0.5rem;
+
+        }
+    }
+}
+
+.solicitudes , .modificaciones {
+    background-color: $secondary_color_dark;
+    padding: 3rem 2rem;
+    margin-top: 5rem;
+    @include desktopXL{
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 3rem;
+        width: 25%;
+        margin: auto;
+        border-bottom: 0.5rem solid $primary_color_light;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3rem;
+
+    }
+
+    .nav-item {
+        margin-right: 5px;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Estilos para el estado activo */
+    .nav-link.active {
+        color: #fff;
+        background-color: #007bff;
+    }
+
+    /* Estilos para enlaces normales */
+    .nav-link:hover {
+        background-color: #6faeec;
+    }
+
+    .solicitudes_secciones{
+        width: 60%;
+        margin-top: -1rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3rem;
+        background-color: #ffffff;
+        opacity: 1;
+        background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+        background-size: 16px 16px;
+        border: 0.2rem solid #007bff;
+
+        p,tr{
+            background-color: #e6e3e3;
+            padding: 1rem;
+        }
+        .seccionesIndividuales{
+            h2{
+                color:$primary_color_dark;
+                background-color: #ffffff;
+                font-weight: 900;
+                font-size: 2rem;
+                width: 100%;
+                border: none;
+            }
+
+        }
+       
+        h3{
+            text-align: center;
+            background-color: #007bff;
+            color:#ffffff;
+            padding: 1rem;
+            border-radius: 20px;
+        }
+
+        table{
+            th{
+                text-transform: uppercase;
+                text-align: left;
+                padding-right: 3rem;
+                
+            }
+            tr{
+                margin: 0;
+            }
+            span{
+                color: $primary_color_dark;
+                font-weight: 600;
+            }
+        }
+    }
+}

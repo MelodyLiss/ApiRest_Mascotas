@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="">solicitudes</a></li>
+                <li><a href="/mascotas/admin">admin</a></li>
+            </ul>
+        </nav>
+        <h1>ApiRest</h1>
+        <h3>Mascotas y cuidadores</h3>
+        <hr>
+    </header>
+
+
+    <section class="informacion">
+        <img src="/assets/img/img-1.jpg" alt="fotografia perrito feliz">
+        <div class="informacion_div">
+            <p>API de Gestión de Mascotas y Cuidadores. Esta API permite realizar operaciones CRUD (Crear, Leer, Actualizar,
+                Eliminar) para gestionar información sobre mascotas y sus cuidadores.</p>
+            <p>Las funcionalidades principales incluyen:</p>
+            <ul>
+                <li>Registro de nuevos cuidadores y sus mascotas.</li>
+                <li>Consulta de información de mascotas con detalles de sus cuidadores asociados.</li>
+                <li>Actualización de datos respecto a la mascota y dueño</li>
+                <li>Eliminación de registros, respetando integridad referencial entre cuidadores y mascotas.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="solicitudes">
+        <h2>solicitudes</h2>
+
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link active" data-seccion="todas_Mascotas" href="">todas las mascotas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  data-seccion="por_atributo_mascota" href="">por atributo mascota</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-seccion="por_cuidador" href="">todos los cuidador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-seccion="por_atributo_cuidador" href="">por atributo cuidador</a>
+            </li>
+        </ul>
+
+
+        <div class="solicitudes_secciones">
+            <div class="seccionesIndividuales">
+                <h2>Listar todas las mascotas</h2>
+                <h3>http://localhost:3000/mascotas</h3>
+                <p>Devuelve un Json con todas las mascotas almacenadas con su cuidador/a asociado/a.</p>
+                <pre><code class="language-json">
+            {
+                "msg": "Listado actual de mascotas",
+                "status": 200,
+                "datos": [
+                    {
+                        "id": 1,
+                        "nombre": "Pochita",
+                        "especie": "perro",
+                        "raza": "mutt",
+                        "edad": 2,
+                        "genero": "macho",
+                        "cuidador_id": 1,
+                        "cuidador": {
+                        "id": 1,
+                        "nombre": "Juan",
+                        "apellido": "Pérez",
+                        "rut": "12345678-9"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "nombre": "Gato",
+                        "especie": "gato",
+                        "raza": "persa",
+                        "edad": 3,
+                        "genero": "hembra",
+                        "cuidador_id": 1,
+                        "cuidador": {
+                        "id": 1,
+                        "nombre": "Juan",
+                        "apellido": "Pérez",
+                        "rut": "12345678-9"
+                        }
+                    },
+                        ...
+                </code></pre>
+            </div>
+
+            <div style="display: none;" class="seccionesIndividuales" >
+                <h2>Buscar por algún atributo de la mascota</h2>
+
+                <p>Puedes realizar busquedas por los siguientes atributos cambiando el valor resaltado</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>por especie</th>
+                            <td>http://localhost:3000/mascotas/especie/<span>perro</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por raza</th>
+                            <td>http://localhost:3000/mascotas/raza/<span>pomerania</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por genero</th>
+                            <td>http://localhost:3000/mascotas/genero/<span>hembra</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por edad</th>
+                            <td>http://localhost:3000/mascotas/edad/<span>1</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por nombre</th>
+                            <td>http://localhost:3000/mascotas/nombre/<span>luna</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por id</th>
+                            <td>http://localhost:3000/mascotas/id/<span>1</span></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <h3>Ejemplo de busqueda por nombre "luna"</h3>
+                <pre><code class="language-json">
+                "msg": "Búsqueda realizada por nombre = luna",
+                "status": 200,
+                "datos": [
+                    {
+                    "id": 26,
+                    "nombre": "Luna",
+                    "especie": "gato",
+                    "raza": "persa",
+                    "edad": 3,
+                    "genero": "hembra",
+                    "cuidador_id": 6,
+                    "cuidador": {
+                        "id": 6,
+                        "nombre": "Laura",
+                        "apellido": "García",
+                        "rut": "67890123-4"
+                    }
+                    }
+                ]
+                }
+                </code></pre>
+            </div>
+
+            <div  style="display: none;" class="seccionesIndividuales">
+
+                <h2>Listar todos los cuidadores y sus mascotas</h2>
+
+                <h3>http://localhost:3000/cuidadores</h3>
+                <p>Devuelve un Json con todos los cuidadores almacenados con sus mascotas asociadas.</p>
+
+        <pre><code class="language-json">
+            {
+                "msg": "Listado actual de cuidadores",
+                "status": 200,
+                "datos": [
+                    {
+                        "id": 1,
+                        "nombre": "Juan",
+                        "apellido": "Pérez",
+                        "rut": "12345678-9",
+                        "mascotas": [
+                        {
+                            "id": 1,
+                            "nombre": "Pochita",
+                            "especie": "perro",
+                            "raza": "mutt",
+                            "edad": 2,
+                            "genero": "macho",
+                            "cuidador_id": 1
+                        },
+                        {
+                            "id": 2,
+                            "nombre": "Gato",
+                            "especie": "gato",
+                            "raza": "persa",
+                            "edad": 3,
+                            "genero": "hembra",
+                            "cuidador_id": 1
+                        },
+                        { ...
+        </code></pre>
+            </div>
+
+            <div style="display: none;" class="seccionesIndividuales" >
+                <h2>Buscar por algún atributo del cuidador</h2>
+
+                <p>Tambien puede filtrar en base a los atributos de los cuidadores</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>por id</th>
+                            <td>http://localhost:3000/cuidadores/id/<span>1</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por rut</th>
+                            <td>http://localhost:3000/cuidadores/rut/<span>12345678-9</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por nombre</th>
+                            <td>http://localhost:3000/cuidadores/nombre/<span>juan</span></td>
+                        </tr>
+
+                        <tr>
+                            <th>por apellido</th>
+                            <td>http://localhost:3000/cuidadores/apellido/<span>perez</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Ejemplo de busqueda por apellido perez</h3>
+                <pre><code class="language-json">
+                
+            "msg": "Búsqueda realizada por apellido = perez",
+            "status": 201,
+            "datos": [
+                {
+                "id": 1,
+                "nombre": "Juan",
+                "apellido": "Pérez",
+                "rut": "12345678-9",
+                "mascotas": [
+                    {
+                    "id": 1,
+                    "nombre": "Pochita",
+                    "especie": "perro",
+                    "raza": "mutt",
+                    "edad": 2,
+                    "genero": "macho",
+                    "cuidador_id": 1
+                    },
+                    {
+                    "id": 2,
+                    "nombre": "Gato",
+                    "especie": "gato",
+                    "raza": "persa",
+                    "edad": 3,
+                    "genero": "hembra",
+                    "cuidador_id": 1
+                    }, ...
+                            </code></pre>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-json.min.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+
+</body>
+
+</html>

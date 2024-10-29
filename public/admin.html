@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/">Solicitudes</a></li>
+                <li><a href="/mascotas/admin">Admin</a></li>
+            </ul>
+        </nav>
+        <h1>Zona de administración</h1>
+        <h3>Mascotas y Cuidadores</h3>
+        <hr>
+    </header>
+
+    <main class="modificaciones">
+        <!-- Navegación de pestañas -->
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link active" href="#" data-seccion="listadoMascotas">Listado Mascotas</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-seccion="ingresarNew">INGRESAR</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-seccion="actualizar">ACTUALIZAR</a>
+            </li>
+        </ul>
+
+    <section class="secciones_admin">
+        <!-- listado completo -->
+        <div class="seccionesIndividuales listadoMascotas">
+            <h3>Listado de mascotas</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>especie</th>
+                        <th>raza</th>
+                        <th>genero</th>
+                        <th>edad</th>
+                        <th>nombre</th>
+                        <th>apellido</th>
+                        <th>rut</th>
+                    </tr>
+                </thead>
+            
+            <tbody id="campoTabla">
+                <tr>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <!-- Formulario de Ingreso -->
+        <div class="seccionesIndividuales" style="display: none;">
+            <form id="ingresar-form" action="/mascotas/crearMascota" method="POST">
+                <h3>Ingreso de una nueva mascota</h3>
+                <fieldset>
+                    <legend>Datos de la mascota</legend>
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" required>
+                    </div>
+                    <div>
+                        <label for="especie">Especie</label>
+                        <select name="especie" id="especie" required>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Pájaro">Pájaro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="raza">Raza</label>
+                        <input type="text" name="raza" id="raza" required>
+                    </div>
+                    <div>
+                        <label for="edad">Edad</label>
+                        <input type="number" name="edad" id="edad" required>
+                    </div>
+                    <div>
+                        <label for="genero">Género</label>
+                        <select name="genero" id="genero" required>
+                            <option value="Hembra">Hembra</option>
+                            <option value="Macho">Macho</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Datos del/a cuidador/a</legend>
+                    <div>
+                        <label for="rut">RUT</label>
+                        <input type="text" name="rut" id="rut" required>
+                    </div>
+                    <div>
+                        <label for="nombre_d">Nombre</label>
+                        <input type="text" name="nombre_d" id="nombre_d" required>
+                    </div>
+                    <div>
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" required>
+                    </div>
+                </fieldset>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+
+
+        <!-- Formulario de Actualización -->
+        <div class="seccionesIndividuales" style="display: none;">
+            <form id="actualizar-form">
+                <button>Actualizar</button>
+            </form>
+        </div>
+
+    </section>
+
+
+    </main>
+
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>

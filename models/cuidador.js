@@ -2,7 +2,7 @@ const { DataTypes} = require('sequelize');
 const sequelize = require('../database/conexion.js');
 const Mascota =require('./mascota.js');
 
-const Duenio = sequelize.define('duenio',{
+const Cuidador = sequelize.define('cuidador',{
     id:{
         type:DataTypes.INTEGER,
         autoIncrement:true,
@@ -21,18 +21,33 @@ const Duenio = sequelize.define('duenio',{
         unique:true
     }
 },{
-    tableName:'duenios',
+    tableName:'cuidadores',
     timestamps:false
 });
 
-Duenio.hasMany(Mascota,{
+Cuidador.hasMany(Mascota,{
     foreignKey:{
-        name:'duenio_id'
+        name:'cuidador_id'
     }
 });
 
-Mascota.belongsTo(Duenio,{
+Mascota.belongsTo(Cuidador,{
     foreignKey:{
-        name:'duenio_id'
+        name:'cuidador_id',
+        allowNull: false
     }
 });
+
+module.exports =Cuidador;
+
+// const test = () =>{
+//     sequelize.sync({ alter: true })
+// .then(() => {
+//     console.log("Las tablas existentes se han sincronizado.");
+// })
+// .catch(err => {
+//     console.error("Error al sincronizar la tabla:", err);
+// });
+// }
+
+// test()

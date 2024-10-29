@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Gwendolyn:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap");
+html {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: #9bd8d9;
+  font-family: "Poppins", sans-serif, sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  color: #282733;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+header {
+  margin-top: 2rem;
+  flex-direction: column;
+  width: 70%;
+}
+header nav {
+  background-color: #ffb62b;
+  padding: 0.3rem;
+  margin-top: -2rem;
+  border-radius: 0 0 2rem 2rem;
+  text-transform: uppercase;
+  margin-left: 70rem;
+  width: 40%;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+}
+header nav ul li {
+  margin: 0rem 1rem;
+  font-size: 1rem;
+  list-style: none;
+}
+header nav ul a {
+  text-decoration: none;
+  color: #282733;
+}
+header nav ul a:hover {
+  color: #fe6a00;
+  font-weight: 600;
+}
+header h1 {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+  font-family: "Londrina Solid", sans-serif;
+  font-size: 4rem;
+  background-color: #fe6a00;
+  color: #fef2e2;
+  width: 50%;
+  border-radius: 2rem;
+  margin: auto;
+}
+header h3 {
+  margin-top: 0.5rem;
+  font-family: "Dancing Script", sans-serif;
+  font-weight: 700;
+  margin-left: 30rem;
+  font-size: 3.5rem;
+}
+header hr {
+  color: #5ca111;
+  border: 0.3rem solid #5ca111;
+  border-radius: 2rem;
+  width: 25rem;
+  margin-top: -2.5rem;
+  margin-right: 7rem;
+}
+@media (min-width: 1300px) {
+  header hr {
+    margin-right: 11rem;
+    width: 30rem;
+    margin-top: -3.5rem;
+  }
+}
+
+.informacion {
+  width: 70%;
+  display: flex;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1300px) {
+  .informacion {
+    font-size: 1.3rem;
+  }
+}
+.informacion img {
+  margin: 3rem;
+  width: 30%;
+  height: 30%;
+  border: 1rem solid #ffb62b;
+  transform: rotate(-6deg);
+}
+.informacion img:hover {
+  transform: rotate(3deg);
+}
+.informacion .informacion_div {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+  background-size: 16px 16px;
+  padding: 2rem;
+  margin-left: 2rem;
+}
+.informacion .informacion_div p,
+.informacion .informacion_div li {
+  background-color: #ffffff;
+  padding: 0.5rem;
+}
+
+.solicitudes, .modificaciones {
+  background-color: #7bc0f8;
+  padding: 3rem 2rem;
+  margin-top: 5rem;
+  /* Estilos para el estado activo */
+  /* Estilos para enlaces normales */
+}
+@media (min-width: 1300px) {
+  .solicitudes, .modificaciones {
+    font-size: 1.3rem;
+  }
+}
+.solicitudes h2, .modificaciones h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 3rem;
+  width: 25%;
+  margin: auto;
+  border-bottom: 0.5rem solid #ffb62b;
+}
+.solicitudes ul, .modificaciones ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+}
+.solicitudes .nav-item, .modificaciones .nav-item {
+  margin-right: 5px;
+  text-transform: uppercase;
+}
+.solicitudes .nav-link, .modificaciones .nav-link {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.solicitudes .nav-link.active, .modificaciones .nav-link.active {
+  color: #fff;
+  background-color: #007bff;
+}
+.solicitudes .nav-link:hover, .modificaciones .nav-link:hover {
+  background-color: #6faeec;
+}
+.solicitudes .solicitudes_secciones, .modificaciones .solicitudes_secciones {
+  width: 60%;
+  margin-top: -1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+  background-size: 16px 16px;
+  border: 0.2rem solid #007bff;
+}
+.solicitudes .solicitudes_secciones p, .solicitudes .solicitudes_secciones tr, .modificaciones .solicitudes_secciones p, .modificaciones .solicitudes_secciones tr {
+  background-color: #e6e3e3;
+  padding: 1rem;
+}
+.solicitudes .solicitudes_secciones .seccionesIndividuales h2, .modificaciones .solicitudes_secciones .seccionesIndividuales h2 {
+  color: #fe6a00;
+  background-color: #ffffff;
+  font-weight: 900;
+  font-size: 2rem;
+  width: 100%;
+  border: none;
+}
+.solicitudes .solicitudes_secciones h3, .modificaciones .solicitudes_secciones h3 {
+  text-align: center;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 20px;
+}
+.solicitudes .solicitudes_secciones table th, .modificaciones .solicitudes_secciones table th {
+  text-transform: uppercase;
+  text-align: left;
+  padding-right: 3rem;
+}
+.solicitudes .solicitudes_secciones table tr, .modificaciones .solicitudes_secciones table tr {
+  margin: 0;
+}
+.solicitudes .solicitudes_secciones table span, .modificaciones .solicitudes_secciones table span {
+  color: #fe6a00;
+  font-weight: 600;
+}
+
+.active {
+  display: block;
+}
+
+form, .listadoMascotas {
+  margin-top: -1rem;
+  padding: 2.5rem;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(#2fa2dd 0.8px, transparent 0.8px), linear-gradient(to right, #2fa2dd 0.8px, #ffffff 0.8px);
+  background-size: 16px 16px;
+}
+form h3, .listadoMascotas h3 {
+  text-transform: uppercase;
+  background-color: #e6e3e3;
+  padding: 0.2rem;
+  text-align: center;
+}
+form button, .listadoMascotas button {
+  background-color: #007bff;
+  color: #e6e3e3;
+  border: none;
+  padding: 0.5rem;
+  display: block;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: 0.2rem solid #007bff;
+  background-color: #e6e3e3;
+  margin: 2rem;
+}
+fieldset legend {
+  background-color: #007bff;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  color: #e6e3e3;
+  font-weight: 600;
+  border-radius: 10px;
+}
+fieldset div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+}
+fieldset input,
+fieldset select {
+  text-align: left;
+  width: 80%;
+}
+
+#buscar-form {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+#buscar-form input {
+  width: 40%;
+  margin: auto;
+}
+
+.secciones_admin table thead th {
+  background-color: #007bff;
+  text-transform: uppercase;
+  color: #e6e3e3;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  margin: none;
+}
+.secciones_admin table tbody th, .secciones_admin table tbody tr, .secciones_admin table tbody td {
+  background-color: #e6e3e3;
+  padding: 0.3rem 0.8rem;
+}
+.secciones_admin table tbody #rut {
+  padding: 0.3rem 3rem;
+}/*# sourceMappingURL=style.css.map */

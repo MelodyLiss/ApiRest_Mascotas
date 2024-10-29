@@ -30,10 +30,9 @@ const Mascota = sequelize.define('mascotas',{
 });
 
 module.exports = Mascota;
-// // <> Para sincronizar con mi BBDD
-
+// <> Para sincronizar con mi BBDD
 // const test = () =>{
-//     sequelize.sync({ force: true })
+//     sequelize.sync({ alter: true })
 // .then(() => {
 //     console.log("Las tablas existentes se han sincronizado.");
 // })
